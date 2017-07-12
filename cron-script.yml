@@ -1,0 +1,20 @@
+---
+# creates this: 30 5 * * 0 /scripts/runit.sh >/dev/null #
+- hosts: all
+  user: ansible
+  become: yes
+
+  tasks:
+  - cron:
+     name: "script cron entry"
+     state: present
+#     state: absent
+     minute: "30"
+     hour: "5"
+#     day: 1-31 */2
+#     month: 1-12
+     weekday: 0
+#     user: 
+     job: "/scripts/runit.sh >/dev/null"
+
+...

@@ -1,0 +1,11 @@
+---
+- hosts: all
+  user: ansible
+  become: yes
+
+  tasks:
+  - command: yum list kernel
+    register: result
+  - debug: var=result.stdout_lines
+
+...

@@ -1,0 +1,20 @@
+---
+# creates this: 30 9 * * * ntpdate -b 0.centos.pool.ntp.org #
+- hosts: all
+  user: ansible
+  become: yes
+
+  tasks:
+  - cron:
+     name: "NTP cron entry"
+     state: present
+#     state: absent
+     minute: "30"
+     hour: "9"
+#     day: 1-31 */2
+#     month: 1-12
+#     weekday: 0-6
+#     user: 
+     job: "ntpdate -b 0.centos.pool.ntp.org"
+
+...
